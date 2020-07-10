@@ -43,6 +43,10 @@ class DCRNNModel(object):
 
         cell = DCGRUCell(rnn_units, adj_mx, max_diffusion_step=max_diffusion_step, num_nodes=num_nodes,
                          filter_type=filter_type)
+        #add to dropout
+        cell = tf.contrib.rnn.DropoutWrapper(cell=cell, state_keep_prob=0.8, output_keep_prob = 0.8)
+        #
+
         cell_with_projection = DCGRUCell(rnn_units, adj_mx, max_diffusion_step=max_diffusion_step, num_nodes=num_nodes,
                                          num_proj=output_dim, filter_type=filter_type)
         encoding_cells = [cell] * num_rnn_layers
