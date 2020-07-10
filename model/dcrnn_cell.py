@@ -23,7 +23,6 @@ class DCGRUCell(RNNCell):
     def __init__(self, num_units, adj_mx, max_diffusion_step, num_nodes, num_proj=None,
                  activation=tf.nn.tanh, reuse=None, filter_type="laplacian", use_gc_for_ru=True):
         """
-
         :param num_units:
         :param adj_mx:
         :param max_diffusion_step:
@@ -77,7 +76,6 @@ class DCGRUCell(RNNCell):
     def __call__(self, inputs, state, scope=None):
         """Gated recurrent unit (GRU) with Graph Convolution.
         :param inputs: (B, num_nodes * input_dim)
-
         :return
         - Output: A `2-D` tensor with shape `[batch_size x self.output_size]`.
         - New state: Either a single `2-D` tensor, or a tuple of tensors matching
@@ -132,7 +130,6 @@ class DCGRUCell(RNNCell):
 
     def _gconv(self, inputs, state, output_size, bias_start=0.0):
         """Graph convolution between input and the graph matrix.
-
         :param args: a 2D Tensor or a list of 2D, batch x n, Tensors.
         :param output_size:
         :param bias:
